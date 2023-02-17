@@ -1,9 +1,14 @@
 package com.letsplaykeks07.arbitrary;
 
+import com.letsplaykeks07.arbitrary.block.ModBlocks;
+import com.letsplaykeks07.arbitrary.item.ModCreativeModeTab;
+import com.letsplaykeks07.arbitrary.item.ModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -22,15 +27,36 @@ public class ArbitraryMod {
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
+
+        modEventBus.addListener(this::addCreative);
 
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
 
+    }
+
+    private void addCreative(CreativeModeTabEvent.BuildContents event) {
+        if(event.getTab() == ModCreativeModeTab.ARBITRARY_TAB) {
+            event.accept(ModItems.COOKIE_SWORD);
+            event.accept(ModItems.VOID);
+            event.accept(ModItems.COOKIE_CRUMB);
+
+            event.accept(ModBlocks.COOKIE_BLOCK);
+            event.accept(ModBlocks.COOKIE_ORE);
+            event.accept(ModBlocks.DEEPSLATE_COOKIE_ORE);
+        }
+
+        if(event.getTab() == CreativeModeTabs.COMBAT) {
+            event.accept(ModItems.COOKIE_SWORD);
+        }
     }
 
 

@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model":  "arbitrary:block/cookie_block" }
+  }
+}
