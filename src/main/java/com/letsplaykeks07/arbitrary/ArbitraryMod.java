@@ -38,20 +38,21 @@ public class ArbitraryMod {
 
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event)
-    {
+   private void commonSetup(final FMLCommonSetupEvent event) {
 
-    }
+   }
 
     private void addCreative(CreativeModeTabEvent.BuildContents event) {
         if(event.getTab() == ModCreativeModeTab.ARBITRARY_TAB) {
             event.accept(ModItems.COOKIE_SWORD);
             event.accept(ModItems.VOID);
             event.accept(ModItems.COOKIE_CRUMB);
+            event.accept(ModItems.STEEL_BAR);
 
             event.accept(ModBlocks.COOKIE_BLOCK);
             event.accept(ModBlocks.COOKIE_ORE);
             event.accept(ModBlocks.DEEPSLATE_COOKIE_ORE);
+            event.accept(ModBlocks.JULIAN);
         }
 
         if(event.getTab() == CreativeModeTabs.COMBAT) {

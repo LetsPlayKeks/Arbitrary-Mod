@@ -33,6 +33,11 @@ public class ModBlocks {
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).strength(6f)
                     .requiresCorrectToolForDrops(),
                     UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> JULIAN = registerBlock("julian",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).strength(9f)
+                    .noCollission()
+                    .requiresCorrectToolForDrops(),
+                    UniformInt.of(3, 7)));
 
 
 
